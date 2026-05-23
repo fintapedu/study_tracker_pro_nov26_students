@@ -436,6 +436,55 @@ const SUBJECT_DEFS = [
           "Ch 14 | Case Study",
         ]},
     ]},
+
+  // ── Paper 6C: Integrated Business Solutions ──
+  { id:"ibs", name:"Integrated Business Solutions", short:"IBS", color:"#7C2D12", light:"#fff7ed", text:"#9a3412",
+    resourceLink:{ label:"ICAI – IBS Study Material & Guidelines", url:"https://www.icai.org/post/19442" },
+    sets:[
+      { id:"unit1", name:"Unit 1 – Financial Reporting & Analysis", timeWindow:"FR Integration", chapters:[
+        "Case Integration | Application of Ind AS in complex business scenarios",
+        "Case Integration | Consolidation, Business Combinations & Group Reporting",
+        "Case Integration | Financial Instruments – Classification, Measurement & Disclosures",
+        "Case Integration | Revenue Recognition (Ind AS 115) in multi-element arrangements",
+        "Case Integration | Leases (Ind AS 116) – Lessee & Lessor accounting",
+        "Case Integration | Analysis of Financial Statements – Ratio Analysis & Interpretation",
+      ]},
+      { id:"unit2", name:"Unit 2 – Strategic Financial Management", timeWindow:"AFM Integration", chapters:[
+        "Case Integration | Capital Budgeting under uncertainty & real options",
+        "Case Integration | Business Valuation – DCF, Relative Valuation & EVA",
+        "Case Integration | M&A – Synergy valuation, financing & restructuring",
+        "Case Integration | Risk Management – Hedging strategies using derivatives",
+        "Case Integration | Portfolio Management & Asset Allocation decisions",
+        "Case Integration | International Finance – Cross-border investments & exposure",
+      ]},
+      { id:"unit3", name:"Unit 3 – Advanced Auditing", timeWindow:"AAA Integration", chapters:[
+        "Case Integration | Audit Planning, Risk Assessment & Materiality",
+        "Case Integration | Internal Controls – Design, evaluation & reporting gaps",
+        "Case Integration | Forensic Accounting, Due Diligence & Investigation",
+        "Case Integration | Ethical dilemmas & Professional scepticism",
+        "Case Integration | Auditor's Report – Modifications, KAM & EOM",
+      ]},
+      { id:"unit4", name:"Unit 4 – Direct & Indirect Tax", timeWindow:"DT + IDT Integration", chapters:[
+        "Case Integration | Tax Planning for corporate restructuring & M&A",
+        "Case Integration | Transfer Pricing – Documentation & compliance",
+        "Case Integration | GST – Complex supply chains, ITC reversal & reconciliation",
+        "Case Integration | Customs & FTP – Export incentives & SEZ provisions",
+        "Case Integration | International Taxation – DTAA application & BEPS impact",
+      ]},
+      { id:"unit5", name:"Unit 5 – Corporate & Economic Laws", timeWindow:"Law Integration", chapters:[
+        "Case Integration | NCLT proceedings – Mergers, Oppression & Winding Up",
+        "Case Integration | SEBI Regulations – Takeover, Insider Trading & LODR",
+        "Case Integration | IBC – Resolution process, liquidation & claims",
+        "Case Integration | FEMA – Overseas investments & ECB regulations",
+      ]},
+      { id:"unit6", name:"Unit 6 – Strategic Cost & Performance Mgmt", timeWindow:"SCPM Integration", chapters:[
+        "Case Integration | Strategic cost analysis for new business models",
+        "Case Integration | Balanced Scorecard & KPI design for organisations",
+        "Case Integration | Transfer pricing in divisional structures",
+        "Case Integration | Standard costing & variance analysis in practice",
+        "Case Integration | Lean systems & value-chain cost management",
+      ]},
+    ]},
 ];
 
 // ──────────────────────────────────────────────────────────
@@ -1793,6 +1842,32 @@ function TrackerApp({ user, onLogout }) {
           <span style={{color:subject.text,fontWeight:600}}>{sp.pct}% complete</span>
         </div>
       </div>
+
+      {/* IBS Resource Link Banner */}
+      {subject.resourceLink&&(
+        <a href={subject.resourceLink.url} target="_blank" rel="noopener noreferrer"
+          style={{display:"flex",alignItems:"center",gap:12,
+            background:dm?"rgba(124,45,18,0.18)":"#fff7ed",
+            borderBottom:`1.5px solid ${dm?"rgba(154,52,18,0.4)":"#fed7aa"}`,
+            padding:"10px 16px",textDecoration:"none",transition:"background 0.18s"}}>
+          <div style={{width:32,height:32,borderRadius:8,flexShrink:0,
+            background:dm?"rgba(154,52,18,0.3)":"#ffedd5",
+            border:`1.5px solid ${dm?"rgba(154,52,18,0.5)":"#fdba74"}`,
+            display:"flex",alignItems:"center",justifyContent:"center",fontSize:"0.9rem"}}>
+            📄
+          </div>
+          <div style={{flex:1,minWidth:0}}>
+            <div style={{fontSize:"0.74rem",fontWeight:600,color:"#9a3412",
+              overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>
+              {subject.resourceLink.label}
+            </div>
+            <div style={{fontSize:"0.6rem",color:dm?"#c2410c":"#b45309",marginTop:1,opacity:0.85}}>
+              icai.org · Tap to open ↗
+            </div>
+          </div>
+          <span style={{color:dm?"#c2410c":"#9a3412",fontSize:"0.8rem",flexShrink:0}}>↗</span>
+        </a>
+      )}
 
       {/* Filter bar */}
       {!reorderMode&&(
